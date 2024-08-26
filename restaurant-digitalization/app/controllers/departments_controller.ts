@@ -1,6 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Department from '#models/department'
-import { createDepartment } from '#validators/department'
+import { createDepartmentValidator } from '#validators/department'
 
 export default class DepartmentsController {
   async getAllDepartments({ response }: HttpContext) {
@@ -9,7 +9,7 @@ export default class DepartmentsController {
   }
 
   async createDepartment({ request, response }: HttpContext) {
-    const payload = await request.validateUsing(createDepartment)
+    const payload = await request.validateUsing(createDepartmentValidator)
     const savedDepartment = await Department.create(payload)
     return response.created(savedDepartment.serialize())
   }

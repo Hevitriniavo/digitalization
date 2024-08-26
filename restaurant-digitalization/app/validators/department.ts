@@ -1,6 +1,6 @@
 import vine from '@vinejs/vine'
 
-export const createDepartment = vine.compile(
+export const createDepartmentValidator = vine.compile(
   vine.object({
     name: vine.string().trim(),
   })
